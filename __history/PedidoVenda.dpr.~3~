@@ -1,0 +1,15 @@
+program PedidoVenda;
+
+uses
+  Vcl.Forms,
+  DMConnection in 'src\database\DMConnection.pas' {DMConexao: TDataModule},
+  ConfigReader in 'src\database\config\ConfigReader.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDMConexao, DMConexao);
+  Application.Run;
+end.

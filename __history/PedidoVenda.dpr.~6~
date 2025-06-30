@@ -1,0 +1,22 @@
+program PedidoVenda;
+
+uses
+  Vcl.Forms,
+  FireDAC.Phys.MySQLWrapper,
+  DMConnection in 'src\database\DMConnection.pas' {DM: TDataModule},
+  ConfigReader in 'src\database\config\ConfigReader.pas',
+  model.TCliente in 'src\model\model.TCliente.pas',
+  ClienteController in 'src\controller\ClienteController.pas',
+  ClienteRepository in 'src\database\persist\ClienteRepository.pas',
+  FrmConsultaClientes in 'src\view\FrmConsultaClientes.pas' {fConsultaClientes},
+  uPrincipal in 'src\view\uPrincipal.pas' {fPrincipal};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDM, DM);
+  Application.CreateForm(TfPrincipal, fPrincipal);
+  Application.Run;
+end.

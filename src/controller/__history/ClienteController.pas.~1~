@@ -1,0 +1,69 @@
+// ClienteController.pas
+unit ClienteController;
+
+interface
+
+uses
+  model.TCliente, FireDAC.Comp.Client;
+
+type
+  TClienteController = class
+  private
+    FCliente: TCliente;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    property Cliente: TCliente read FCliente write FCliente;
+
+    function BuscarPorCodigo(Id: Integer; Query: TFDQuery): Boolean;
+    function Salvar(Query: TFDQuery): Boolean;
+    function Excluir(Query: TFDQuery): Boolean;
+  end;
+
+implementation
+
+{ TClienteController }
+
+constructor TClienteController.Create;
+begin
+  FCliente := TCliente.Create;
+end;
+
+destructor TClienteController.Destroy;
+begin
+  FCliente.Free;
+  inherited;
+end;
+
+function TClienteController.BuscarPorCodigo(Id: Integer; Query: TFDQuery): Boolean;
+begin
+  FCliente.Codigo := Id;
+  try
+    FCliente.Carregar(Query);
+    Result := True;
+  except
+    Result := False;
+  end;
+end;
+
+function TClienteController.Salvar(Query: TFDQuery): Boolean;
+begin
+  try
+    FCliente.Salvar(Query);
+    Result := True;
+  except
+    Result := False;
+  end;
+end;
+
+function TClienteController.Excluir(Query: TFDQuery): Boolean;
+begin
+  try
+    FCliente.Excluir(Query);
+    Result := True;
+  except
+    Result := False;
+  end;
+end;
+
+end.

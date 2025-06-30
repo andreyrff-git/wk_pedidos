@@ -1,0 +1,99 @@
+unit ProdutoRepository;
+
+interface
+
+uses
+  System.Generics.Collections, model.TProduto, FireDAC.Comp.Client, Data.DB, DMConnection;
+
+type
+  TProdutoRepository = class
+  public
+    function CarregaTodos: TObjectList<TProduto>;
+    function BuscarPorDescricao(const Descricao: string): TObjectList<TProduto>;
+    function BuscarPorCodigo(const Codigo: string): TProduto;
+  end;
+
+implementation
+
+{ TClienteRepository }
+
+function TClienteRepository.CarregaTodos: TObjectList<TProduto>;
+var
+  Query: TFDQuery;
+  Produto: TProdutosDTO;
+begin
+  Result := TObjectList<TProdutosDTO>.Create;
+  Query := DM.CriarQuery;
+  try
+    Query.SQL.Text := 'SELECT codigo, descricao, preco_venda FROM produtos';
+    Query.Open;
+
+    while not Query.Eof do
+    begin
+      Produto := TProdutosDTO.Create;
+      Produto.Codigo := Query.FieldByName('codigo').AsInteger;
+      Produto.Descricao := Query.FieldByName('descricao').AsString;
+      Produto.PrecoVenda := Query.FieldByName('preco_venda').AsCurrency;
+
+      Result.Add(Produto);
+      Query.Next;
+    end;
+  finally
+    Query.Free;
+  end;
+end;
+
+function TClienteRepository.BuscarPorCodigo(const Codigo: string): TProduto;
+var
+  Query: TFDQuery;
+begin
+  Result := nil;
+  Query := DM.CriaQuery;
+  try
+    Query.SQL.Text := 'SELECT codigo, nome, cidade, uf FROM clientes WHERE codigo = :Codigo';
+    Query.ParamByName('Codigo').AsString := Codigo;
+    Query.Open;
+
+    if not Query.IsEmpty then
+    begin
+      Result := TProduto.Create;
+      Result.Codigo := Query.FieldByName('codigo').AsInteger;
+      Result.Nome := Query.FieldByName('nome').AsString;
+      Result.Cidade := Query.FieldByName('cidade').AsString;
+      Result.UF := Query.FieldByName('uf').AsString;
+    end;
+  finally
+    Query.Free;
+  end;
+end;
+
+function TClienteRepository.BuscarPorNome(const Nome: string): TObjectList<TProduto>;
+var
+  Query: TFDQuery;
+  Produto: TProduto;
+begin
+  Result := TObjectList<TCliente>.Create;
+  Query := DM.CriaQuery;
+  try
+    Query.SQL.Text := 'SELECT codigo, nome, cidade, uf FROM clientes WHERE nome LIKE :Nome';
+    Query.ParamByName('Nome').AsString := '%' + Nome + '%';
+    Query.Open;
+
+    while not Query.Eof do
+    begin
+      Cliente := TCliente.Create;
+      Cliente.Codigo := Query.FieldByName('codigo').AsInteger;
+      Cliente.Nome := Query.FieldByName('nome').AsString;
+      Cliente.Cidade := Query.FieldByName('cidade').AsString;
+      Cliente.UF := Query.FieldByName('uf').AsString;
+
+      Result.Add(Cliente);
+      Query.Next;
+    end;
+  finally
+    Query.Free;
+  end;
+end;
+
+
+end.

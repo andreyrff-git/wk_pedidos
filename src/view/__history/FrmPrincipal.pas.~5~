@@ -1,0 +1,79 @@
+unit FrmPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.StdCtrls, FireDAC.DApt.Intf, FireDAC.DApt;
+
+type
+  TPrincipal = class(TForm)
+    MainMenu1: TMainMenu;
+    Vendas1: TMenuItem;
+    ManutPedido1: TMenuItem;
+    Sair1: TMenuItem;
+    Button1: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure ManutPedido1Click(Sender: TObject);
+    procedure Sair1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Principal: TPrincipal;
+
+implementation
+
+uses
+  DMConnection, FrmConsultaClientes, ClienteController, FrmPedidos;
+
+{$R *.dfm}
+
+procedure TPrincipal.Button1Click(Sender: TObject);
+var
+  FrmConsulta: TConsultaClientes;
+  ClienteController: TClienteController;
+begin
+  ClienteController := TClienteController.Create();
+  FrmConsulta := TConsultaClientes.Create(Self, ClienteController);
+  try
+    if FrmConsulta.ShowModal = mrOk then
+    begin
+//      edtCodigoCliente.Text := FrmConsulta.cdsClientes.FieldByName('Codigo').AsString;
+//      lbCliente.Caption     := FrmConsulta.cdsClientes.FieldByName('Nome').AsString;
+//      lbCliente.Visible     := True;
+//      gbProdutos.Enabled    := True;
+//      edtCodigoProduto.SetFocus;
+    end;
+  finally
+    FrmConsulta.Free;
+  end;
+end;
+
+procedure TPrincipal.FormCreate(Sender: TObject);
+begin
+  try
+    DM.ConectaDB;
+  except
+    on E: Exception do
+      ShowMessage('Erro ao conectar: ' + E.Message);
+  end;
+end;
+
+procedure TPrincipal.ManutPedido1Click(Sender: TObject);
+begin
+  if not Assigned(Pedidos) then
+      Pedidos := TPedidos.Create(Self);
+    Pedidos.Show;
+end;
+
+procedure TPrincipal.Sair1Click(Sender: TObject);
+begin
+  close;
+end;
+
+end.

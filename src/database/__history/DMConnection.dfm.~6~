@@ -1,0 +1,26 @@
+object DM: TDM
+  Height = 480
+  Width = 640
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'User_Name=admin'
+      'Database=wk_pedidos'
+      'Password=admin'
+      'Server=localhost'
+      'CharacterSet=utf8mb4'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 112
+    Top = 40
+  end
+  object FDTransaction: TFDTransaction
+    Connection = FDConnection
+    Left = 112
+    Top = 104
+  end
+  object FDPhysMySQLDriverLink: TFDPhysMySQLDriverLink
+    VendorLib = 'D:\Projetos\Summit\PROJETO_WK\Win64\Debug\libmysql.dll'
+    Left = 104
+    Top = 192
+  end
+end

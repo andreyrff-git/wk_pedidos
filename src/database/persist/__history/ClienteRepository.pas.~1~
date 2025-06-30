@@ -1,0 +1,19 @@
+unit ClienteRepository;
+
+interface
+
+uses model.TCliente;
+
+type
+  TClienteRepository = class()
+  public
+    function CarregaTodos: TObjectList<TCliente>;
+    function BuscarPorNome(const Nome: string): TObjectList<TCliente>;
+    function BuscarPorCodigo(const Codigo: string): TCliente;
+  end;
+
+implementation
+
+
+
+end.

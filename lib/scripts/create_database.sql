@@ -1,7 +1,5 @@
---BASE
 CREATE DATABASE `wk_pedidos` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
 
---CLIENTES
 create table clientes (
 codigo INT NOT NULL AUTO_INCREMENT,
 nome varchar(100),
@@ -12,7 +10,6 @@ PRIMARY KEY (codigo),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
---PRODUTOS
 create table produtos (
 codigo INT NOT NULL AUTO_INCREMENT,
 descricao varchar(100) NOT NULL,
@@ -20,7 +17,7 @@ preco_venda DECIMAL(14, 4) NOT NULL,
 PRIMARY KEY (codigo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---PEDIDO GERAL
+
 create table pedido_geral (
 nrpedido INT NOT NULL AUTO_INCREMENT,
 codcliente INT NOT NULL,
@@ -32,7 +29,7 @@ ON DELETE RESTRICT
 ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---PEDIDO PRODUTO
+
 create table pedidos_produtos (
 id INT NOT NULL AUTO_INCREMENT,
 nrpedido INT NOT NULL,

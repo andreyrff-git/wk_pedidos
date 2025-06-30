@@ -17,12 +17,11 @@ type
 
 implementation
 
-const
-  CONFIG_FILE = 'D:\Projetos\Summit\PROJETO_WK\src\database\config\config.ini'; // path do arquivo INI
-
 constructor TReadConfig.Create;
+var config_file : string;
 begin
-  FIni := TIniFile.Create(CONFIG_FILE);
+  config_file := '..\..\src\database\config\config.ini'; // caminho do arquivo INI;
+  FIni := TIniFile.Create(config_file);
 end;
 
 destructor TReadConfig.Destroy;

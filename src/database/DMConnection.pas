@@ -62,7 +62,6 @@ begin
   inherited
   Create(AOwner);
   FConfig := TReadConfig.Create;
-//  FDPhysMySQLDriverLink.VendorLib := '';
   FDPhysMySQLDriverLink.VendorLib := ExtractFilePath(ParamStr(0)) + 'libmysql.dll';
 end;
 

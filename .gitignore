@@ -8,5 +8,6 @@ __recovery/
 *.tvsconfig
 *.dproj.local
 *.stat
+*.~*
 /Win32/
 /Win64/

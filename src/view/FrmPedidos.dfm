@@ -32,7 +32,6 @@ object Pedidos: TPedidos
       Height = 67
       Align = alBottom
       TabOrder = 0
-      ExplicitTop = 69
       object gbProdutos: TGroupBox
         Left = 1
         Top = 1
@@ -42,7 +41,6 @@ object Pedidos: TPedidos
         Caption = ' Informa'#231#245'es dos Produtos '
         Enabled = False
         TabOrder = 0
-        ExplicitTop = -7
         object lbCodigoProduto: TLabel
           Left = 24
           Top = 14
@@ -52,12 +50,14 @@ object Pedidos: TPedidos
           StyleName = 'Windows'
         end
         object btPesquisaProduto: TSpeedButton
-          Left = 148
+          Left = 147
           Top = 31
-          Width = 23
-          Height = 22
+          Width = 24
+          Height = 24
           Hint = 'Consultar Produtos'
-          Caption = '...'
+          ImageIndex = 0
+          Images = DM.ImageList1
+          HotImageIndex = 0
           OnClick = btPesquisaProdutoClick
         end
         object Label1: TLabel
@@ -115,7 +115,7 @@ object Pedidos: TPedidos
           Width = 71
           Height = 25
           Hint = 'Confirmar item para o pedido'
-          Caption = 'Confirmar'
+          Caption = '&Confirmar'
           TabOrder = 4
           OnClick = btnConfirmaClick
         end
@@ -143,7 +143,6 @@ object Pedidos: TPedidos
         Align = alTop
         Caption = 'Pedidos '
         TabOrder = 0
-        ExplicitWidth = 272
         object Label4: TLabel
           Left = 9
           Top = 19
@@ -163,16 +162,16 @@ object Pedidos: TPedidos
         object btnConsultarPedido: TButton
           Left = 122
           Top = 38
-          Width = 63
+          Width = 70
           Height = 25
           Hint = 'Consultar Pedido'
-          Caption = 'Consultar'
+          Caption = 'Pesquisar'
           Enabled = False
           TabOrder = 1
           OnClick = btnConsultarPedidoClick
         end
         object pnlBtn: TPanel
-          Left = 200
+          Left = 209
           Top = 31
           Width = 169
           Height = 38
@@ -183,7 +182,7 @@ object Pedidos: TPedidos
             Width = 63
             Height = 25
             Hint = 'Gravar Pedido'
-            Caption = 'Gravar'
+            Caption = '&Gravar'
             Enabled = False
             TabOrder = 0
             OnClick = btnGravarPedidoClick
@@ -194,7 +193,7 @@ object Pedidos: TPedidos
             Width = 63
             Height = 25
             Hint = 'Excluir Pedido'
-            Caption = 'Excluir'
+            Caption = '&Excluir'
             TabOrder = 1
             OnClick = btnExcluiPedidoClick
           end
@@ -210,12 +209,14 @@ object Pedidos: TPedidos
       Caption = 'Cliente'
       TabOrder = 2
       object btPesquisaCliente: TSpeedButton
-        Left = 150
-        Top = 32
-        Width = 23
-        Height = 23
+        Left = 148
+        Top = 30
+        Width = 26
+        Height = 26
         Hint = 'Consultar Clientes'
-        Caption = '...'
+        ImageIndex = 0
+        Images = DM.ImageList1
+        HotImageIndex = 0
         OnClick = btPesquisaClienteClick
       end
       object lbCodigoCliente: TLabel
@@ -256,17 +257,16 @@ object Pedidos: TPedidos
   end
   object pnRodape: TPanel
     Left = 0
-    Top = 486
+    Top = 495
     Width = 695
-    Height = 41
+    Height = 32
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 400
     object pnTotal: TPanel
       Left = 509
       Top = 1
       Width = 185
-      Height = 39
+      Height = 30
       Align = alRight
       Alignment = taRightJustify
       Caption = 'Valor Total --> 0,00'
@@ -277,23 +277,22 @@ object Pedidos: TPedidos
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 501
+      ExplicitHeight = 39
     end
   end
   object pnGrid: TPanel
     Left = 0
     Top = 221
     Width = 695
-    Height = 265
+    Height = 274
     Align = alClient
     TabOrder = 2
-    ExplicitTop = 137
-    ExplicitHeight = 263
+    ExplicitHeight = 265
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
       Width = 693
-      Height = 263
+      Height = 272
       Align = alClient
       DataSource = dsItensPedido
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -402,10 +401,5 @@ object Pedidos: TPedidos
       Origin = 'nome'
       Size = 133
     end
-  end
-  object VirtualImageList1: TVirtualImageList
-    Images = <>
-    Left = 480
-    Top = 297
   end
 end

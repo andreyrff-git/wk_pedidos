@@ -26,6 +26,7 @@ type
     procedure edtBuscaExit(Sender: TObject);
     procedure dbgClientesKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     FController: TClienteController;
     procedure ConfigurarClientDataSet;
@@ -88,6 +89,15 @@ procedure TConsultaClientes.FormCreate(Sender: TObject);
 begin
   ConfigurarClientDataSet;
   BuscarClientes;
+end;
+
+procedure TConsultaClientes.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    Perform(WM_NEXTDLGCTL, 0, 0);
+  end;
 end;
 
 procedure TConsultaClientes.BuscarClientes;

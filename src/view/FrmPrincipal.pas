@@ -11,10 +11,11 @@ type
     MainMenu1: TMainMenu;
     Vendas1: TMenuItem;
     ManutPedido1: TMenuItem;
-    Sair1: TMenuItem;
+    Sistema1: TMenuItem;
+    Fechar1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure ManutPedido1Click(Sender: TObject);
-    procedure Sair1Click(Sender: TObject);
+    procedure Fechar1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +31,11 @@ uses
   DMConnection, FrmConsultaClientes, ClienteController, FrmPedidos;
 
 {$R *.dfm}
+
+procedure TPrincipal.Fechar1Click(Sender: TObject);
+begin
+  close;
+end;
 
 procedure TPrincipal.FormCreate(Sender: TObject);
 begin
@@ -47,11 +53,6 @@ begin
       Pedidos := TPedidos.Create(Self);
     Pedidos.ShowModal;
   FreeAndNil(Pedidos);
-end;
-
-procedure TPrincipal.Sair1Click(Sender: TObject);
-begin
-  close;
 end;
 
 end.

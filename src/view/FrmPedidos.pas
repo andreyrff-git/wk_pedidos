@@ -54,7 +54,6 @@ type
     qryClientescodigo: TFDAutoIncField;
     qryClientesnome: TWideStringField;
     btnConsultarPedido: TButton;
-    VirtualImageList1: TVirtualImageList;
     edtPrecoVenda: TNumberBox;
     pnlBtn: TPanel;
     btnGravarPedido: TButton;
@@ -516,13 +515,10 @@ begin
   FConsultaCliente := false;
   FPedidoController := TPedidoController.Create(TPedidoRepository.Create());
 
-  VirtualImageList1.Width := 24;
-  VirtualImageList1.Height := 24;
-  VirtualImageList1.Add('search', 0);
 
-  // Associa ao botão
-  btPesquisaCliente.Images := VirtualImageList1;
-  btPesquisaCliente.ImageIndex := 0;
+//  // Associa ao botão
+//  btPesquisaCliente.Images := VirtualImageList1;
+//  btPesquisaCliente.ImageIndex := 0;
 
   edtPrecoVenda.Mode := nbmCurrency;
   edtPrecoVenda.CurrencyString := 'R$ ';

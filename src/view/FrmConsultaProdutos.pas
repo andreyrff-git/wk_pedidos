@@ -24,6 +24,7 @@ type
     procedure edtCodigoProdutoExit(Sender: TObject);
     procedure dbgProdutosKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     FController: TProdutoController;
     procedure ConfigurarProdutoDataSet;
@@ -149,6 +150,15 @@ procedure TConsultaProdutos.FormCreate(Sender: TObject);
 begin
   ConfigurarProdutoDataSet;
   BuscarProdutos;
+end;
+
+procedure TConsultaProdutos.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    Key := #0;
+    Perform(WM_NEXTDLGCTL, 0, 0);
+  end;
 end;
 
 end.

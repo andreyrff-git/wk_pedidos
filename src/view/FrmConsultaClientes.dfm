@@ -11,8 +11,10 @@ object ConsultaClientes: TConsultaClientes
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  KeyPreview = True
   Position = poMainFormCenter
   OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
   TextHeight = 15
   object pnTop: TPanel
     Left = 0
@@ -59,7 +61,7 @@ object ConsultaClientes: TConsultaClientes
       Font.Height = -11
       Font.Name = 'Segoe UI'
       Font.Style = []
-      ItemIndex = 0
+      ItemIndex = 1
       Items.Strings = (
         'C'#243'digo'
         'Nome')
@@ -74,7 +76,6 @@ object ConsultaClientes: TConsultaClientes
     Height = 349
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 351
     object dbgClientes: TDBGrid
       Left = 1
       Top = 1

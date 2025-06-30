@@ -17,16 +17,19 @@ object Principal: TPrincipal
   object MainMenu1: TMainMenu
     Left = 168
     Top = 48
+    object Sistema1: TMenuItem
+      Caption = 'Sistema'
+      object Fechar1: TMenuItem
+        Caption = '&Fechar'
+        OnClick = Fechar1Click
+      end
+    end
     object Vendas1: TMenuItem
-      Caption = 'Vendas'
+      Caption = '&Vendas'
       object ManutPedido1: TMenuItem
         Caption = '&Pedidos'
         OnClick = ManutPedido1Click
       end
-    end
-    object Sair1: TMenuItem
-      Caption = '&Sair'
-      OnClick = Sair1Click
     end
   end
 end
